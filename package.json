@@ -1,8 +1,8 @@
 {
-  "name": "iblog",
+  "name": "blog",
   "version": "2.0.0",
   "description": "基于 Node.js 的开源个人博客系统。",
-  "author": "Sky.Sun",
+  "author": "Yingqing.Shan",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .ts,.js,.vue .",
@@ -11,7 +11,7 @@
     "build": "nuxt-ts build",
     "build2": "nuxt-ts build --analyze",
     "start": "nuxt-ts start",
-    "dockerImage": "docker image build -t iblog .",
+    "dockerImage": "docker image build -t iblog:v1.0.0 .",
     "dockerRun": "docker-compose up -d"
   },
   "dependencies": {
@@ -38,7 +38,7 @@
     "cross-env": "^6.0.3",
     "echarts": "^4.6.0",
     "express": "^4.17.1",
-    "express-jwt": "^6.0.0",
+    "express-jwt": "^5.3.1",
     "express-session": "^1.17.0",
     "highlight.js": "^9.17.1",
     "jdenticon": "^2.2.0",

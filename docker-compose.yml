@@ -4,20 +4,17 @@ services:
     image: mongo:4.4.1
     restart: always
     volumes:
-      - ~/data/db:/data/db
-  nuxt-ts:
-    build: ./app/
-    container_name: nuxt-ts
-    restart: always
-    ports:
-      - '9000:9000'
-    command: 'npm run start'
-  nginx:
-    image: nginx:1.15
-    container_name: ngx
-    ports:
-      - '80:80'
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
+      - /home/iBlog/mongoDB/data/db:/data/db
+    networks:
+      - iblog-network
+  web:
+    image: iblog:1.0.0
     depends_on:
-      - nuxt-ts
+      - database
+    ports:
+      - 9000:9000
+    networks:
+      - iblog-network
+networks:
+  iblog-network:
+    driver: bridge

@@ -102,7 +102,9 @@ const config: Configuration = {
     /*
      ** You can extend webpack config here
      */
-    extend () {},
+    extend () {
+      
+    },
     cache: true,
     loaders: {
       less: {
