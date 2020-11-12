@@ -11,7 +11,7 @@
     "build": "nuxt-ts build",
     "build2": "nuxt-ts build --analyze",
     "start": "nuxt-ts start",
-    "dockerImage": "docker image build -t iblog:v1.0.0 .",
+    "dockerImage": "docker image build -t iblog:1.0.0 .",
     "dockerRun": "docker-compose up -d"
   },
   "dependencies": {
