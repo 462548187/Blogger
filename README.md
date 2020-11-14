@@ -34,7 +34,7 @@
 ![移动端](./preview_3.png)
 
 ## 在线实例
-我的博客 [https://skysun.name/](https://skysun.name/)
+我的博客 [https://blog.yingqing.work/](https://blog.yingqing.work/)
 
 ## 分支说明
 * 当前分支 (v2.0.0) 基于 [TypeScript](https://www.typescriptlang.org/) + [NuxtJS](https://nuxtjs.org/)
