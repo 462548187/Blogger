@@ -91,3 +91,4 @@ sw.*
 
 # Upload Files
 static/upload/images/*
+blog.config.ts

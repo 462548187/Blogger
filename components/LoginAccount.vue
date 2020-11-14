@@ -1,10 +1,8 @@
 <template>
   <div class="auth-panel">
-    <h2 class="auth-title">
-      后台登录
-    </h2>
-    <p class="auth-desc">
-      Admin
+    <h2 class="auth-title">博客管理系统</h2>
+    <p class="auth-input">
+      <a-input ref="input" v-model="name" size="large" placeholder="admin" />
     </p>
     <div class="auth-input">
       <a-input-password
@@ -15,42 +13,40 @@
         @keyup.enter="login"
       />
     </div>
-    <a-button type="primary" :block="true" size="large" @click="login">
-      登录
-    </a-button>
+    <a-button type="primary" :block="true" size="large" @click="login">登录</a-button>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import md5 from 'blueimp-md5';
+import Vue from "vue";
+import md5 from "blueimp-md5";
 export default Vue.extend({
-  data () {
+  data() {
     return {
-      pwd: ''
+      pwd: "",
     };
   },
-  mounted () {
+  mounted() {
     (this.$refs.input as any).$children[0].focus();
   },
   methods: {
-    login (this: any) {
+    login(this: any) {
       if (!this.pwd) {
         (this.$refs.input as any).$children[0].focus();
         return;
       }
       this.$auth
-        .loginWith('local', {
+        .loginWith("local", {
           data: {
-            password: md5(this.pwd)
-          }
+            password: md5(this.pwd),
+          },
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
-          this.$message.error('密码不正确！');
+          this.$message.error("密码不正确！");
         });
-    }
-  }
+    },
+  },
 });
 </script>
 

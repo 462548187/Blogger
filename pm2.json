@@ -1,6 +1,6 @@
 {
   "apps": [{
-    "name": "iBlog",
+    "name": "Blogger",
     "script": "yarn",
     "args": "start",
     "interpreter": "/bin/bash"

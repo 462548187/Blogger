@@ -2,7 +2,7 @@
   <div class="layout-footer">
     {{ year }} © Powered by
     <a
-      href="https://github.com/462548187/iBlog"
+      href="https://github.com/462548187/Blogger"
       target="_blank"
     >yingqing.work</a>
     <span v-if="settings.recordInfo" class="record-info">

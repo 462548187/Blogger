@@ -9,72 +9,51 @@
         class="layout-sider"
       >
         <div class="sider-header">
-          <nuxt-link to="/" title="iBlog">
-            <img src="/images/iBlog-logo.png">
+          <nuxt-link to="/admin" title="iBlog">
+            <img src="/images/iBlog-logo.png" />
           </nuxt-link>
           <h4>后台管理</h4>
         </div>
         <a-menu theme="dark" mode="inline" :selected-keys="[currentKey]">
           <a-menu-item key="index" title="数据统计">
             <nuxt-link to="/admin">
-              <font-awesome-icon
-                :icon="['fas', 'chart-line']"
-                fixed-width
-              />
+              <font-awesome-icon :icon="['fas', 'chart-line']" fixed-width />
               <span>数据统计</span>
             </nuxt-link>
           </a-menu-item>
           <a-menu-item key="article-manage" title="文章管理">
             <nuxt-link to="/admin/article-manage">
-              <font-awesome-icon
-                :icon="['fas', 'pen-nib']"
-                fixed-width
-              />
+              <font-awesome-icon :icon="['fas', 'pen-nib']" fixed-width />
               <span>文章管理</span>
             </nuxt-link>
           </a-menu-item>
           <a-menu-item key="category-manage" title="分类管理">
             <nuxt-link to="/admin/category-manage">
-              <font-awesome-icon
-                :icon="['fas', 'map-signs']"
-                fixed-width
-              />
+              <font-awesome-icon :icon="['fas', 'map-signs']" fixed-width />
               <span>分类管理</span>
             </nuxt-link>
           </a-menu-item>
           <a-menu-item key="comment-manage" title="评论管理">
             <nuxt-link to="/admin/comment-manage">
-              <font-awesome-icon
-                :icon="['fas', 'comments']"
-                fixed-width
-              />
+              <font-awesome-icon :icon="['fas', 'comments']" fixed-width />
               <span>评论管理</span>
             </nuxt-link>
           </a-menu-item>
           <a-menu-item key="guestbook-manage" title="留言管理">
             <nuxt-link to="/admin/guestbook-manage">
-              <font-awesome-icon
-                :icon="['fas', 'comment-dots']"
-                fixed-width
-              />
+              <font-awesome-icon :icon="['fas', 'comment-dots']" fixed-width />
               <span>留言管理</span>
             </nuxt-link>
           </a-menu-item>
           <a-menu-item key="profile-settings" title="关于管理">
             <nuxt-link to="/admin/profile-settings">
-              <font-awesome-icon
-                :icon="['fas', 'user']"
-                fixed-width
-              />
+              <font-awesome-icon :icon="['fas', 'user']" fixed-width />
               <span>关于管理</span>
             </nuxt-link>
           </a-menu-item>
           <a-menu-item key="system-settings" title="系统设置">
             <nuxt-link to="/admin/system-settings">
-              <font-awesome-icon
-                :icon="['fas', 'cogs']"
-                fixed-width
-              />
+              <font-awesome-icon :icon="['fas', 'cogs']" fixed-width />
               <span>系统设置</span>
             </nuxt-link>
           </a-menu-item>
@@ -95,19 +74,18 @@
               </span>
               <a-menu slot="overlay">
                 <a-menu-item>
+                  <a href="/">
+                    <font-awesome-icon :icon="['fas', 'home']" style="margin-right: 5px;" />首页
+                  </a>
+                </a-menu-item>
+                <a-menu-item>
                   <a href="/auth/change-password">
-                    <font-awesome-icon
-                      :icon="['fas', 'key']"
-                      style="margin-right: 5px;"
-                    />修改密码
+                    <font-awesome-icon :icon="['fas', 'key']" style="margin-right: 5px;" />修改密码
                   </a>
                 </a-menu-item>
                 <a-menu-item>
                   <a title="退出登录" @click="logout">
-                    <font-awesome-icon
-                      :icon="['fas', 'sign-out-alt']"
-                      style="margin-right: 5px;"
-                    />退出登录
+                    <font-awesome-icon :icon="['fas', 'sign-out-alt']" style="margin-right: 5px;" />退出登录
                   </a>
                 </a-menu-item>
               </a-menu>
@@ -123,62 +101,62 @@
   </a-locale-provider>
 </template>
 <script lang="ts">
-import Vue from 'vue';
-import moment from 'moment';
-import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN';
-import LayoutFooter from '@/components/LayoutFooter.vue';
-Vue.filter('toDate', (date: string) => {
-  return moment(date).format('YYYY-MM-DD HH:mm:ss');
+import Vue from "vue";
+import moment from "moment";
+import zhCN from "ant-design-vue/lib/locale-provider/zh_CN";
+import LayoutFooter from "@/components/LayoutFooter.vue";
+Vue.filter("toDate", (date: string) => {
+  return moment(date).format("YYYY-MM-DD HH:mm:ss");
 });
 export default Vue.extend({
-  middleware: 'auth',
+  middleware: "auth",
   components: {
-    LayoutFooter
+    LayoutFooter,
   },
-  data () {
+  data() {
     return {
       collapsed: false,
       year: new Date().getFullYear(),
       zhCN,
-      currentKey: ''
+      currentKey: "",
     };
   },
   computed: {
-    marginLeft (): string {
-      return this.collapsed ? '80px' : '200px';
-    }
+    marginLeft(): string {
+      return this.collapsed ? "80px" : "200px";
+    },
   },
-  created () {
+  created() {
     this.currentKey = this.getCurrentKey(this.$route.path);
-    this.$router.afterEach(to => {
+    this.$router.afterEach((to) => {
       this.currentKey = this.getCurrentKey(to.path);
     });
   },
   methods: {
-    toggleCollapsed () {
+    toggleCollapsed() {
       this.collapsed = !this.collapsed;
-      this.$bus.$emit('changeLayout');
+      this.$bus.$emit("changeLayout");
     },
-    logout (this: any) {
-      this.$auth.logout('local');
+    logout(this: any) {
+      this.$auth.logout("local");
     },
-    getCurrentKey (originalPath) {
-      let path = originalPath.replace('/admin', '');
-      if (path.substring(0, 1) === '/') {
+    getCurrentKey(originalPath) {
+      let path = originalPath.replace("/admin", "");
+      if (path.substring(0, 1) === "/") {
         path = path.substring(1);
       }
-      if (path.substring(path.length - 1) === '/') {
+      if (path.substring(path.length - 1) === "/") {
         path = path.substring(0, path.length - 1);
       }
       if (!path) {
-        return 'index';
+        return "index";
       }
-      if (path === 'article-edit') {
-        return 'article-manage';
+      if (path === "article-edit") {
+        return "article-manage";
       }
       return path;
-    }
-  }
+    },
+  },
 });
 </script>
 <style scoped>
