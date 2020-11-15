@@ -6,17 +6,18 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - /home/iBlog/mongoDB/data/db:/data/db
+      - /home/Blogger/mongoDB/data/db:/data/db
     networks:
-      - iblog-network
+      - blogger-network
   web:
-    image: iblog:1.0.0
+    image: blogger:1.0.1
+    restart: always
     depends_on:
       - database
     ports:
       - 9000:9000
     networks:
-      - iblog-network
+      - blogger-network
 networks:
-  iblog-network:
+  blogger-network:
     driver: bridge
